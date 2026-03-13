@@ -49,4 +49,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: firmware
-          path: .pio_build/esp32-s3-devkitc-1/firmware.bin
+          path: .pio/build/esp32-s3-devkitc-1/firmware.bin
