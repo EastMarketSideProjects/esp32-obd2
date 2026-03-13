@@ -51,11 +51,7 @@ jobs:
         with:
           name: firmware
           path: /tmp/pio_build/esp32-s3-devkitc-1/firmware.bin
-      - name: Find firmware2
-        run: find $GITHUB_WORKSPACE -name "firmware.bin"
-      - name: Find firmware
-        run: find / -name "firmware.bin" 2>/dev/null
-
+      
 
      
           
