@@ -42,7 +42,7 @@ jobs:
         run: |
           pio ci \
             --lib="." \
-            --build-dir=.pio_build \
+            --build-dir=/tmp/pio_build \
             --board=esp32-s3-devkitc-1 \
             examples/Subscription/subscription.cpp
 
@@ -50,5 +50,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: firmware
-          path: .pio_build/esp32-s3-devkitc-1/firmware.bin
+          path: /tmp/pio_build/esp32-s3-devkitc-1/firmware.bin
           
