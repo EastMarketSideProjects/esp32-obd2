@@ -1,0 +1,46 @@
+name: Build
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.platformio/.cache
+            ~/.platformio/packages
+          key: platformio-esp32-s3-${{ github.sha }}
+          restore-keys: platformio-esp32-s3-
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install PlatformIO
+        run: pip install platformio
+
+      - name: Generate platformio.ini
+        run: |
+          cat > platformio.ini << 'EOF2'
+          [env:esp32-s3-devkitc-1]
+          platform = espressif32
+          board = esp32-s3-devkitc-1
+          framework = arduino
+          EOF2
+
+      - name: Build example
+        run: |
+          pio ci \
+            --lib="." \
+            --board=esp32-s3-devkitc-1 \
+            examples/Subscription/subscription.cpp
