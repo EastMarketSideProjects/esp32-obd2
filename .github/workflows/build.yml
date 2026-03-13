@@ -48,7 +48,8 @@ jobs:
         run: | 
           echo "Working directory:" 
           pwd echo "----- repo root -----" 
-          ls -la echo "----- .pio (root) -----" 
+          ls -la 
+          echo "----- .pio (root) -----" 
           ls -la .pio || true 
           echo "----- examples -----" 
           ls -la examples || true 
