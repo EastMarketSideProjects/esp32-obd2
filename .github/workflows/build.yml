@@ -51,4 +51,7 @@ jobs:
         with:
           name: firmware
           path: /tmp/pio_build/esp32-s3-devkitc-1/firmware.bin
+
+      - name: Find firmware
+        run: find /tmp/pio_build -name "firmware.bin"
           
