@@ -54,4 +54,7 @@ jobs:
 
       - name: Find firmware
         run: find /tmp/pio_build -name "firmware.bin"
+
+      - name: Find firmware2
+        run: find $GITHUB_WORKSPACE -name "firmware.bin"
           
