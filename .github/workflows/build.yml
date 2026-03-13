@@ -44,7 +44,16 @@ jobs:
             --lib="." \
             --board=esp32-s3-devkitc-1 \
             examples/Subscription/subscription.cpp
-
+      - name: Debug build outputs 
+        run: | 
+          echo "Working directory:" 
+          pwd echo "----- repo root -----" 
+          ls -la echo "----- .pio (root) -----" 
+          ls -la .pio || true 
+          echo "----- examples -----" 
+          ls -la examples || true 
+          echo "----- searching for binaries -----" 
+          find . -type f \( -name "*.bin" -o -name "*.elf" \)
       - name: Upload firmware
         uses: actions/upload-artifact@v4
         with:
