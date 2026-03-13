@@ -42,8 +42,8 @@ jobs:
         run: |
           pio ci \
             --lib="." \
+            --build-dir .pio_build
             --board=esp32-s3-devkitc-1 \
-            --project-option="build_dir=.pio_build" \
             examples/Subscription/subscription.cpp
 
       - name: Upload firmware
