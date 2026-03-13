@@ -4,9 +4,11 @@
 #define CAN_TX GPIO_NUM_5
 #define CAN_SPEED 500  // kbps
 
+#define REQUEST_INTERVAL 250
+
 OBD obd;
 
-void on_speed(OBDResult& result) {
+void on_speed(const OBDResult& result) {
   Serial.printf("Speed: %0.0f %s\n", result.value, result.unit);
 }
 
@@ -19,7 +21,7 @@ void setup() {
   obd.subscribe(PID::SPEED, REQUEST_INTERVAL, on_speed);
 
   // inline lambda handler
-  obd.subscribe(PID::SPEED, REQUEST_INTERVAL, [](OBDResult& result) {
+  obd.subscribe(PID::SPEED, REQUEST_INTERVAL, [](const OBDResult& result) {
     Serial.printf("RPM: %0.0f %s\n", result.value, result.unit);
   });
 }
