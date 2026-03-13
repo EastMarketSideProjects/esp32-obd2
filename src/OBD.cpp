@@ -1,9 +1,6 @@
 #include "OBD.h"
 
-bool OBD::begin(gpio_num_t txPin, gpio_num_t rxPin, uint32_t speedKbps,
-                LogLevel logLevel) {
-  _logLevel = logLevel;
-
+bool OBD::begin(gpio_num_t txPin, gpio_num_t rxPin, uint32_t speedKbps) {
   // Zero out all slots
   for (uint8_t i = 0; i < OBD_MAX_PENDING; i++) {
     _pending[i].active = false;
@@ -221,10 +218,6 @@ void OBD::update() {
     if (!_pending[i].active) continue;
 
     if ((now - _pending[i].sentAt) > TIMEOUT_MS) {
-      if (_logLevel >= LogLevel::DEBUG) {
-        Serial.debug("OBD request for PID 0x%02X timed out\n",
-                     static_cast<uint8_t>(_pending[i].pid));
-      }
       framesDropped++;
       if (_pending[i].isSubRequest) {
         uint8_t si = _pending[i].subIndex;

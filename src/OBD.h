@@ -47,8 +47,7 @@ typedef void (*OBDScanCallback)(const uint8_t* pids, uint8_t count);
 
 class OBD {
  public:
-  bool begin(gpio_num_t txPin, gpio_num_t rxPin, uint32_t speedKbps = 1000,
-             LogLevel logLevel = LogLevel::INFO);
+  bool begin(gpio_num_t txPin, gpio_num_t rxPin, uint32_t speedKbps = 500);
 
   void request(PID pid, OBDCallback callback);
 
@@ -89,7 +88,6 @@ class OBD {
   Subscription _subscriptions[OBD_MAX_SUBSCRIPTIONS] = {};
   uint8_t _supportedPIDs[OBD_MAX_SCAN_PIDS] = {};
   uint8_t _supportedPIDsCount = 0;
-  LogLevel _logLevel = LogLevel::INFO;
 
   OBDScanCallback _scanCallback = nullptr;
   bool _scanPending = false;
