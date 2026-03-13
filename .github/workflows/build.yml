@@ -43,10 +43,12 @@ jobs:
           pio ci \
             --lib="." \
             --board=esp32-s3-devkitc-1 \
+            --project-option="build_dir=.pio_build" \
             examples/Subscription/subscription.cpp
 
       - name: Upload firmware
         uses: actions/upload-artifact@v4
         with:
           name: firmware
-          path: .pio/build/esp32-s3-devkitc-1/firmware.bin
+          path: .pio_build/esp32-s3-devkitc-1/firmware.bin
+          
