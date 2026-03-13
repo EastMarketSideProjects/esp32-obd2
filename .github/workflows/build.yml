@@ -42,7 +42,7 @@ jobs:
         run: |
           pio ci \
             --lib="." \
-            --build-dir .pio_build \
+            --build-dir=.pio_build \
             --board=esp32-s3-devkitc-1 \
             examples/Subscription/subscription.cpp
 
