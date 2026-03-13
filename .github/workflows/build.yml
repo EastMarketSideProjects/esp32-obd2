@@ -43,6 +43,7 @@ jobs:
           pio ci \
             --lib="." \
             --board=esp32-s3-devkitc-1 \
+            --build-dir .pio/build \
             examples/Subscription/subscription.cpp
       - name: Debug build outputs 
         run: | 
