@@ -1,4 +1,4 @@
-# ESP32-OBD
+# ESP32-OBD2
 
 An asynchronus library to handle OBD communication on ESP32
 
