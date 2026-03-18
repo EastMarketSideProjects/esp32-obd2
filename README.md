@@ -1,11 +1,13 @@
 # ESP32-OBD
 
-An asynchronus library to handle OBD communication on ESP32"
+An asynchronus library to handle OBD communication on ESP32
+
+Currently only supports reading from the CAN bus not writing
 
 # Usage
 
 
-Here is simple example how to subscribe to an OBD PID (Parameter ID) with a callback function
+This is simple example how to subscribe to an OBD PID (Parameter ID) with a callback function
 
 ```cpp
 #include <OBD.h>
@@ -35,4 +37,15 @@ void setup() {
 }
 
 void loop() { obd.update(); }
+```
+
+# PlatformIO
+
+```ini
+[env:esp32-s3-devkitc-1]
+platform = espressif32
+board = esp32-s3-devkitc-1
+framework = arduino
+lib_deps = 
+    https://github.com/EastMarketSideProjects/esp32-obd2.git
 ```
