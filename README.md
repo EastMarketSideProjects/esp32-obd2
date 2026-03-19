@@ -49,3 +49,30 @@ framework = arduino
 lib_deps = 
     https://github.com/EastMarketSideProjects/esp32-obd2.git
 ```
+
+
+# Hardware Used
+
+- [ESP32-S3 Super Mini](https://www.amazon.com/dp/B0D47HBFDY?linkCode=ssc&tag=onamzmayaodom-20&creativeASIN=B0D47HBFDY&asc_item-id=amzn1.ideas.91GBZA4ZURP2&ref_=aipsflist_asin)
+
+- [TJA1050 CAN Transceiver](https://www.amazon.com/dp/B0FJ47QVZZ?linkCode=ssc&creativeASIN=B0FJ47QVZZ&asc_item-id=amzn1.ideas.91GBZA4ZURP2&ref_=aipsflist_qv_asin&tag=onamzmayaodom-20)
+
+- [OBD2 Connector & Housing](https://www.amazon.com/dp/B083FDYGKS?linkCode=ssc&tag=onamzmayaodom-20&creativeASIN=B083FDYGKS&asc_item-id=amzn1.ideas.91GBZA4ZURP2&ref_=aipsflist_asin)
+## Wiring 
+
+```
+ESP32-S3                TJA1050                   OBD-II Port (J1962)
+┌─────────────┐         ┌─────────────┐            ┌─────────────────┐
+│             │         │             │            │                 │
+│    GPIO 5   ├────────►│ TXD         │            │                 │
+│    GPIO 4   │◄────────┤ RXD         │            │   Pin 6  (CANH) │
+│             │         │         CANH├───────────►│                 │
+│          5V ├────────►│ VCC         │            │   Pin 14 (CANL) │
+│             │         │         CANL├───────────►│                 │
+│         GND ├────┐    │         GND ├────┐       │   Pin 4/5 (GND) │
+│             │    │    │             │    │       └────────┬────────┘
+└─────────────┘    │    └─────────────┘    │                │
+                   │                       │                │
+                   └───────────────────────┴────────────────┘
+                                     GND (common)
+```
