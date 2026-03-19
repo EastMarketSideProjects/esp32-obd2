@@ -13,15 +13,18 @@ void on_speed(const OBDResult& result) {
 }
 
 void setup() {
+  Serial.begin(115200);
+
   if (!obd.begin(CAN_TX, CAN_RX, CAN_SPEED)) {
     Serial.println("CAN failed to start!");
+    return;
   }
 
   // named handler function
   obd.subscribe(PID::SPEED, REQUEST_INTERVAL, on_speed);
 
   // inline lambda handler
-  obd.subscribe(PID::SPEED, REQUEST_INTERVAL, [](const OBDResult& result) {
+  obd.subscribe(PID::RPM, REQUEST_INTERVAL, [](const OBDResult& result) {
     Serial.printf("RPM: %0.0f %s\n", result.value, result.unit);
   });
 }

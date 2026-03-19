@@ -1,6 +1,6 @@
 {
-  "name": "ESP32-OBD",
-  "description": "An asynchronus library to handle OBD communication on ESP32",
+  "name": "ESP32-OBD2",
+  "description": "A library to handle asynchronus OBD2/CAN bus communication on ESP32",
   "keywords": "can, twai, esp32, obd",
   "authors": {},
   "repository": {
