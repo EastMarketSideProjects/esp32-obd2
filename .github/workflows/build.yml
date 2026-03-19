@@ -43,24 +43,13 @@ jobs:
           pio ci \
             --lib="." \
             --board=esp32-s3-devkitc-1 \
-            --build-dir .pio/build \
             examples/Subscription/subscription.cpp
-      - name: Debug build outputs 
-        run: | 
-          echo "Working directory:" 
-          pwd echo "----- repo root -----" 
-          ls -la 
-          echo "----- .pio (root) -----" 
-          ls -la .pio || true 
-          echo "----- examples -----" 
-          ls -la examples || true 
-          echo "----- searching for binaries -----" 
-          find . -type f \( -name "*.bin" -o -name "*.elf" \)
-      - name: Upload firmware
-        uses: actions/upload-artifact@v4
-        with:
-          name: firmware
-          path: .pio/build/esp32-s3-devkitc-1/firmware.bin
+      
+      # - name: Upload firmware
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: firmware
+      #     path: .pio/build/esp32-s3-devkitc-1/firmware.bin
       
 
      
