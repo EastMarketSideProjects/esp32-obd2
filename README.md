@@ -1,6 +1,6 @@
 # ESP32-OBD2
 
-An asynchronus library to handle OBD2/CAN communication on ESP32
+A library to handle asynchronus OBD2/CAN bus communication on ESP32
 
 Currently only supports reading from the CAN bus not writing
 
